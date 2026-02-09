@@ -44,9 +44,9 @@ import { useToast } from "@/hooks/use-toast";
    return (
      <div className="min-h-screen bg-background">
        <Header />
-       <main className="pt-40">
+       <main className="pt-24">
          {/* Hero Section */}
-         <section className="bg-primary py-16">
+         <section className="bg-primary py-8">
            <div className="container-main px-4">
              <motion.div
                initial={{ opacity: 0, y: 20 }}
@@ -64,7 +64,7 @@ import { useToast } from "@/hooks/use-toast";
          </section>
  
          {/* Contact Form */}
-         <section className="py-20 bg-background">
+         <section className="py-10 bg-background">
            <div className="container-main px-4">
              <motion.div
                initial={{ opacity: 0, y: 20 }}
@@ -203,7 +203,7 @@ import { useToast } from "@/hooks/use-toast";
          </section>
  
           {/* Contact Info */}
-          <section className="py-16 bg-muted/30">
+          <section className="py-8 bg-muted/30">
             <div className="container-main px-4">
               {/* Address & Phone */}
               <div className="text-center mb-12">

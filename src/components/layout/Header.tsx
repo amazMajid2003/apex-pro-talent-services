@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X, Search, User, ChevronDown, MapPin, Phone } from "lucide-react";
+import { Menu, X, Search, User, ChevronDown, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import logoPng from "@/assets/logo.png";
 
@@ -18,10 +18,10 @@ const navItems = [{
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
-    <header className="z-50">
-      {/* Top bar - scrolls with page */}
+    <header className="fixed top-0 left-0 right-0 z-50">
+      {/* Top bar */}
       <div className="bg-primary border-b border-navy-light/30">
-        <div className="container-main flex items-center justify-end gap-4 py-2 px-4 text-sm flex-wrap">
+        <div className="container-main flex items-center justify-end gap-4 py-1 px-4 text-sm flex-wrap">
           <a href="tel:4169481058" className="flex items-center gap-1 text-primary-foreground/80 hover:text-primary-foreground transition-colors">
             <Phone className="w-3 h-3" />
             <span>416-948-1058</span>
@@ -37,14 +37,14 @@ export const Header = () => {
         </div>
       </div>
 
-      {/* Main nav - fixed */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-primary/95 backdrop-blur-sm">
-        <div className="container-main flex items-center justify-between py-3 px-4">
+      {/* Main nav */}
+      <nav className="bg-primary/95 backdrop-blur-sm">
+        <div className="container-main flex items-center justify-between py-2 px-4">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
             <img
               alt="Apex Pro Talent Services"
-              className="h-32 w-auto"
+              className="h-12 w-auto"
               src={logoPng}
             />
             <span className="text-lg font-heading font-bold text-primary-foreground tracking-tight leading-tight hidden sm:block">
@@ -91,7 +91,7 @@ export const Header = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-primary border-t border-navy-light/30 fixed top-[calc(theme(spacing.32)+theme(spacing.3)*2)] left-0 right-0 z-40"
+            className="md:hidden bg-primary border-t border-navy-light/30"
           >
             <div className="container-main py-4 px-4 flex flex-col gap-4">
               {navItems.map(item => (

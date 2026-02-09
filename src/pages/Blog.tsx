@@ -108,9 +108,9 @@
    return (
      <div className="min-h-screen bg-background">
        <Header />
-       <main className="pt-40">
+       <main className="pt-24">
          {/* Hero Section */}
-         <section className="bg-primary py-16">
+         <section className="bg-primary py-8">
            <div className="container-main px-4">
              <motion.div
                initial={{ opacity: 0, y: 20 }}
@@ -181,7 +181,7 @@
          </section>
  
          {/* Articles Grid */}
-         <section className="py-16 bg-background">
+         <section className="py-8 bg-background">
            <div className="container-main px-4">
              {filteredArticles.length === 0 ? (
                <div className="text-center py-12">

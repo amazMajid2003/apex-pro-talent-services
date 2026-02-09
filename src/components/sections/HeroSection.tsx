@@ -15,7 +15,7 @@
    };
 
    return (
-     <section className="relative min-h-screen flex items-center pt-40 overflow-hidden">
+     <section className="relative min-h-screen flex items-center pt-24 overflow-hidden">
        {/* Background image with overlay */}
        <div className="absolute inset-0">
          <img

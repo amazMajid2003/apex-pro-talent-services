@@ -69,11 +69,11 @@
    return (
      <div className="min-h-screen bg-background">
        <Header />
-       <main className="pt-40">
+       <main className="pt-24">
          {/* Hero Section */}
          <section className="relative min-h-[60vh] flex items-center bg-primary overflow-hidden">
            <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/95 to-primary/80" />
-           <div className="container-main relative z-10 grid lg:grid-cols-2 gap-8 px-4 py-16">
+           <div className="container-main relative z-10 grid lg:grid-cols-2 gap-8 px-4 py-8">
              <motion.div
                initial={{ opacity: 0, x: -30 }}
                animate={{ opacity: 1, x: 0 }}
@@ -108,7 +108,7 @@
          </section>
  
          {/* Value Prop */}
-         <section className="py-20 bg-background">
+          <section className="py-10 bg-background">
            <div className="container-main px-4">
              <motion.div
                initial={{ opacity: 0, y: 20 }}
@@ -127,7 +127,7 @@
          </section>
  
          {/* Manufacturing Solutions */}
-         <section className="py-20 bg-muted/30">
+          <section className="py-10 bg-muted/30">
            <div className="container-main px-4">
              <div className="grid lg:grid-cols-2 gap-12 items-center">
                <motion.div
@@ -166,7 +166,7 @@
          </section>
  
          {/* Steps to Success */}
-         <section className="py-20 bg-background">
+          <section className="py-10 bg-background">
            <div className="container-main px-4">
              <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-12 text-center">
                Our Steps to Success
@@ -197,7 +197,7 @@
          </section>
  
          {/* Staffing Solutions CTA */}
-         <section className="relative py-20">
+         <section className="relative py-10">
            <div className="absolute inset-0">
              <img
                src={ctaBanner}
@@ -222,7 +222,7 @@
          </section>
  
          {/* Industries We Serve */}
-         <section className="py-20 bg-background">
+          <section className="py-10 bg-background">
            <div className="container-main px-4">
              <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-12 text-center">
                Industries We Serve
@@ -248,7 +248,7 @@
          </section>
  
          {/* MyPath for Employers */}
-         <section className="py-20 bg-muted/30">
+         <section className="py-10 bg-muted/30">
            <div className="container-main px-4">
              <div className="grid lg:grid-cols-2 gap-12 items-center">
                <motion.div
@@ -284,7 +284,7 @@
          </section>
  
          {/* Workforce Insights */}
-         <section className="py-20 bg-background">
+         <section className="py-10 bg-background">
            <div className="container-main px-4">
              <div className="flex items-center justify-between mb-12">
                <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground">
@@ -324,7 +324,7 @@
          </section>
  
          {/* Contact CTA */}
-         <section className="py-16 bg-primary">
+         <section className="py-8 bg-primary">
            <div className="container-main px-4 text-center">
              <h2 className="text-2xl md:text-3xl font-heading font-bold text-primary-foreground mb-4">
                Let's Connect
