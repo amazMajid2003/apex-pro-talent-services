@@ -40,7 +40,7 @@ export const Footer = () => {
           {/* Logo and contact */}
           <div className="lg:col-span-2">
             <Link to="/" className="flex items-center gap-3 mb-6">
-              <img alt="Apex Pro Talent Services" className="h-20 w-auto" src={logoPng} />
+              <img alt="Apex Pro Talent Services" className="h-12 w-auto" src={logoPng} />
               <div>
                 <span className="text-xl font-heading font-bold tracking-tight block">
                   Apex Pro

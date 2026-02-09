@@ -16,7 +16,7 @@ export const EngineeringSection = () => {
           once: true
         }} className="flex items-center justify-center">
             <div className="flex items-center gap-4">
-              <img alt="Apex Pro Talent Services" className="h-24 w-auto" src={logoPng} />
+              <img alt="Apex Pro Talent Services" className="h-12 w-auto" src={logoPng} />
               <div>
                 <span className="text-2xl md:text-3xl font-heading font-bold text-primary-foreground">
                   Apex Pro

@@ -128,7 +128,7 @@
    return (
      <div className="min-h-screen bg-background">
        <Header />
-       <main className="pt-40">
+       <main className="pt-24">
          {/* Search Hero */}
          <section className="bg-primary py-12">
            <div className="container-main px-4">
@@ -317,7 +317,7 @@
          </section>
  
          {/* CTA */}
-         <section className="py-16 bg-primary">
+         <section className="py-8 bg-primary">
            <div className="container-main px-4 text-center">
              <h2 className="text-2xl md:text-3xl font-heading font-bold text-primary-foreground mb-4">
                Can't find what you're looking for?
