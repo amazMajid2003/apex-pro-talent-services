@@ -1,7 +1,7 @@
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
-import { ArrowUp, MapPin, Phone } from "lucide-react";
+import { ArrowUp } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import aboutHero from "@/assets/about-hero.jpg";
@@ -171,26 +171,6 @@ const AboutUs = () => {
           </div>
         </section>
 
-        {/* Contact CTA */}
-        <section className="py-8 bg-muted/30">
-          <div className="container-main px-4 text-center">
-            <h2 className="text-2xl md:text-3xl font-heading font-bold text-foreground mb-4">Contact Us</h2>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-4 text-muted-foreground">
-              <div className="flex items-center gap-2">
-                <MapPin className="w-5 h-5 text-secondary" />
-                <span>6790 Davand Dr Unit #6, Mississauga, ON L5T 2G5</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Phone className="w-5 h-5 text-secondary" />
-                <a href="tel:4169481058" className="hover:text-secondary transition-colors">416-948-1058</a>
-              </div>
-            </div>
-            <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
-              Have questions? We're here to help 24/7. Reach out at <a href="mailto:Info@atspro.ca" className="text-secondary font-semibold hover:underline">Info@atspro.ca</a>
-            </p>
-            <Link to="/contact"><Button size="lg" variant="secondary">Get in Touch</Button></Link>
-          </div>
-        </section>
       </main>
       <Footer />
     </div>
