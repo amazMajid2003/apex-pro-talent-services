@@ -44,7 +44,7 @@ export const Header = () => {
           <Link to="/" className="flex items-center gap-3">
             <img
               alt="Apex Pro Talent Services"
-              className="h-12 w-auto"
+              className="h-24 w-auto"
               src={logoPng}
             />
             <span className="text-lg font-heading font-bold text-primary-foreground tracking-tight leading-tight hidden sm:block">

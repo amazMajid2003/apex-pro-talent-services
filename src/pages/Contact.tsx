@@ -5,7 +5,6 @@
  import { Label } from "@/components/ui/label";
  import { Textarea } from "@/components/ui/textarea";
  import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { MapPin, Phone } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
@@ -202,50 +201,6 @@ import { useToast } from "@/hooks/use-toast";
            </div>
          </section>
  
-          {/* Contact Info */}
-          <section className="py-8 bg-muted/30">
-            <div className="container-main px-4">
-              {/* Address & Phone */}
-              <div className="text-center mb-12">
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-6">
-                  <div className="flex items-center gap-2 text-foreground">
-                    <MapPin className="w-5 h-5 text-secondary" />
-                    <span>6790 Davand Dr Unit #6, Mississauga, ON L5T 2G5</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-foreground">
-                    <Phone className="w-5 h-5 text-secondary" />
-                    <a href="tel:4169481058" className="hover:text-secondary transition-colors">416-948-1058</a>
-                  </div>
-                </div>
-              </div>
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-                <div>
-                  <h3 className="font-heading font-semibold text-lg text-foreground mb-2">
-                    General Inquiries
-                  </h3>
-                  <a href="mailto:Info@atspro.ca" className="text-muted-foreground hover:text-secondary transition-colors">Info@atspro.ca</a>
-                </div>
-                <div>
-                  <h3 className="font-heading font-semibold text-lg text-foreground mb-2">
-                    Sales
-                  </h3>
-                  <a href="mailto:Sales@atspro.ca" className="text-muted-foreground hover:text-secondary transition-colors">Sales@atspro.ca</a>
-                </div>
-                <div>
-                  <h3 className="font-heading font-semibold text-lg text-foreground mb-2">
-                    Jobs
-                  </h3>
-                  <a href="mailto:jobs@atspro.ca" className="text-muted-foreground hover:text-secondary transition-colors">jobs@atspro.ca</a>
-                </div>
-                <div>
-                  <h3 className="font-heading font-semibold text-lg text-foreground mb-2">
-                    Accounts
-                  </h3>
-                  <a href="mailto:Accounts@atspro.ca" className="text-muted-foreground hover:text-secondary transition-colors">Accounts@atspro.ca</a>
-                </div>
-              </div>
-            </div>
-          </section>
        </main>
        <Footer />
      </div>
