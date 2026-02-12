@@ -12,7 +12,8 @@ import NotFound from "./pages/NotFound";
  const AboutUs = lazy(() => import("./pages/AboutUs"));
  const Contact = lazy(() => import("./pages/Contact"));
  const Blog = lazy(() => import("./pages/Blog"));
- const JobSearch = lazy(() => import("./pages/JobSearch"));
+const JobSearch = lazy(() => import("./pages/JobSearch"));
+const JobApplication = lazy(() => import("./pages/JobApplication"));
 
 const queryClient = new QueryClient();
 
@@ -30,6 +31,7 @@ const App = () => (
            <Route path="/contact" element={<Suspense fallback={<div className="min-h-screen bg-background" />}><Contact /></Suspense>} />
            <Route path="/blog" element={<Suspense fallback={<div className="min-h-screen bg-background" />}><Blog /></Suspense>} />
            <Route path="/search" element={<Suspense fallback={<div className="min-h-screen bg-background" />}><JobSearch /></Suspense>} />
+           <Route path="/apply" element={<Suspense fallback={<div className="min-h-screen bg-background" />}><JobApplication /></Suspense>} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
