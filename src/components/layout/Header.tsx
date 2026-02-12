@@ -13,6 +13,9 @@ const navItems = [{
 }, {
   label: "About Us",
   href: "/about"
+}, {
+  label: "Apply Now",
+  href: "/apply"
 }];
 
 export const Header = () => {
