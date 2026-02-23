@@ -74,10 +74,6 @@ export const Header = () => {
               <Search className="w-4 h-4" />
               <span className="font-medium">Search Jobs</span>
             </Link>
-            <Link to="/contact" className="flex items-center gap-2 text-primary-foreground/90 hover:text-primary-foreground transition-colors">
-              <User className="w-4 h-4" />
-              <span className="font-medium">Sign In/Up</span>
-            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -107,10 +103,6 @@ export const Header = () => {
               <Link to="/search" className="flex items-center gap-2 text-primary-foreground/90 py-2" onClick={() => setIsMenuOpen(false)}>
                 <Search className="w-4 h-4" />
                 <span>Search Jobs</span>
-              </Link>
-              <Link to="/contact" className="flex items-center gap-2 text-primary-foreground/90 py-2" onClick={() => setIsMenuOpen(false)}>
-                <User className="w-4 h-4" />
-                <span>Sign In/Up</span>
               </Link>
             </div>
           </motion.div>
