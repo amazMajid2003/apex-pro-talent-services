@@ -48,7 +48,7 @@ export const Footer = () => {
           </div>
           <div className="flex gap-3">
             <Link to="/search">
-              <Button variant="outline" className="border-secondary-foreground text-secondary-foreground transition-none">
+              <Button variant="outline" className="border-secondary-foreground text-secondary-foreground hover:bg-transparent hover:text-secondary-foreground">
                 Find Jobs
               </Button>
             </Link>
