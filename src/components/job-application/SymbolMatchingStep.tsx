@@ -65,7 +65,6 @@ export const SymbolMatchingStep = ({ data, onChange }: Props) => {
                     placeholder="Enter #"
                     className="w-24 text-center"
                   />
-                  <span className="text-xs text-muted-foreground">{sym.label}</span>
                 </motion.div>
               );
             })}
