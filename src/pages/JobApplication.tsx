@@ -264,10 +264,6 @@ const JobApplication = () => {
       toast({ title: "Application Saved", description: "PDF downloaded. There was an issue saving online — please email the PDF to info@atspro.ca.", variant: "destructive" });
     }
 
-    // Open mailto as backup
-    const subject = encodeURIComponent(`Job Application — ${personalInfo.firstName} ${personalInfo.lastName}`);
-    const body = encodeURIComponent(`Please find attached the job application for ${personalInfo.firstName} ${personalInfo.lastName}.\n\nPhone: ${personalInfo.phoneCell}\nPositions: ${personalInfo.positions.join(", ")}\n\nNote: Please attach the downloaded PDF to this email before sending.`);
-    window.open(`mailto:info@atspro.ca?subject=${subject}&body=${body}`, "_blank");
   };
 
   return (
