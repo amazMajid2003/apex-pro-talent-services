@@ -185,7 +185,7 @@ const JobApplication = () => {
     toast({ title: "Downloaded!", description: "Your application has been saved as a PDF." });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!symbolData.agreementChecked || !symbolData.signatureDate) {
       toast({ title: "Agreement Required", description: "Please agree to the terms and provide a date.", variant: "destructive" });
       return;
@@ -194,12 +194,79 @@ const JobApplication = () => {
     // Download PDF
     handleDownload();
 
-    // Open mailto
-    const subject = encodeURIComponent(`Job Application — ${personalInfo.firstName} ${personalInfo.lastName}`);
-    const body = encodeURIComponent(`Please find attached the job application for ${personalInfo.firstName} ${personalInfo.lastName}.\n\nPhone: ${personalInfo.phoneCell}\nEmail: (provided by applicant)\nPositions: ${personalInfo.positions.join(", ")}\n\nNote: Please attach the downloaded PDF to this email before sending.`);
-    window.open(`mailto:info@atspro.ca?subject=${subject}&body=${body}`, "_blank");
+    // Send data to Google Sheet
+    const sheetData = {
+      timestamp: new Date().toISOString(),
+      lastName: personalInfo.lastName,
+      firstName: personalInfo.firstName,
+      initials: personalInfo.initials,
+      sin: personalInfo.sin,
+      dob: personalInfo.dob,
+      sex: personalInfo.sex,
+      address: personalInfo.address,
+      city: personalInfo.city,
+      province: personalInfo.province,
+      postalCode: personalInfo.postalCode,
+      phoneHome: personalInfo.phoneHome,
+      phoneCell: personalInfo.phoneCell,
+      emergencyName: personalInfo.emergencyName,
+      emergencyPhone: personalInfo.emergencyPhone,
+      highSchool: personalInfo.highSchool,
+      college: personalInfo.college,
+      university: personalInfo.university,
+      wh1Position: personalInfo.wh1Position,
+      wh1Salary: personalInfo.wh1Salary,
+      wh1Supervisor: personalInfo.wh1Supervisor,
+      wh1Phone: personalInfo.wh1Phone,
+      wh1From: personalInfo.wh1From,
+      wh1To: personalInfo.wh1To,
+      wh1ReasonLeft: personalInfo.wh1ReasonLeft,
+      wh2Position: personalInfo.wh2Position,
+      wh2Salary: personalInfo.wh2Salary,
+      wh2Supervisor: personalInfo.wh2Supervisor,
+      wh2Phone: personalInfo.wh2Phone,
+      wh2From: personalInfo.wh2From,
+      wh2To: personalInfo.wh2To,
+      wh2ReasonLeft: personalInfo.wh2ReasonLeft,
+      positions: personalInfo.positions.join(", "),
+      employmentType: personalInfo.employmentType,
+      availability: Object.entries(personalInfo.availability).filter(([, v]) => v).map(([k]) => k).join(", "),
+      safetyShoes: personalInfo.safetyShoes,
+      transportation: personalInfo.transportation,
+      vacationAckName: agreements.vacationAckName,
+      payRate: agreements.payRate,
+      vacationPay: agreements.vacationPay,
+      totalPay: agreements.totalPay,
+      whmisAnswer: `${agreements.whmisW} ${agreements.whmisH} ${agreements.whmisM} ${agreements.whmisI} ${agreements.whmisS}`,
+      whmisThreeParts: agreements.whmisThreeParts,
+      safetyEquipment: agreements.safetyEquipment,
+      readLabels: agreements.readLabels,
+      informSupervisor: agreements.informSupervisor,
+      leaveWithout: agreements.leaveWithout,
+      touchChemical: agreements.touchChemical,
+      mathAnswers: JSON.stringify(agreements.math),
+      symbolAnswers: JSON.stringify(symbolData.symbolAnswers),
+      agreementChecked: symbolData.agreementChecked ? "Yes" : "No",
+      signatureDate: symbolData.signatureDate,
+    };
 
-    toast({ title: "Application Submitted!", description: "Your PDF has been downloaded. Please attach it to the email that just opened and send it to complete your application." });
+    try {
+      await fetch("https://script.google.com/macros/s/AKfycbyn8QnTRAiBNE1YMWZbJqwWbsodHz51EUbKBuquTKg1QZiqNiatf5pcvJRQEzg1BAnu/exec", {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(sheetData),
+      });
+      toast({ title: "Application Submitted!", description: "Your application has been saved and the PDF downloaded." });
+    } catch (err) {
+      console.error("Sheet submission error:", err);
+      toast({ title: "Application Saved", description: "PDF downloaded. There was an issue saving online — please email the PDF to info@atspro.ca.", variant: "destructive" });
+    }
+
+    // Open mailto as backup
+    const subject = encodeURIComponent(`Job Application — ${personalInfo.firstName} ${personalInfo.lastName}`);
+    const body = encodeURIComponent(`Please find attached the job application for ${personalInfo.firstName} ${personalInfo.lastName}.\n\nPhone: ${personalInfo.phoneCell}\nPositions: ${personalInfo.positions.join(", ")}\n\nNote: Please attach the downloaded PDF to this email before sending.`);
+    window.open(`mailto:info@atspro.ca?subject=${subject}&body=${body}`, "_blank");
   };
 
   return (
