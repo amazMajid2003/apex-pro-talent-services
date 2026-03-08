@@ -109,7 +109,7 @@ export const Header = () => {
           </div>
 
           {/* Mobile menu button */}
-          <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="md:hidden text-primary-foreground p-2" aria-label="Toggle menu">
+          <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="md:hidden text-primary-foreground" aria-label="Toggle menu">
             {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
