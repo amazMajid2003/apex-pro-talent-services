@@ -17,7 +17,7 @@ export const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center pt-44 overflow-hidden">
+    <section className="relative min-h-screen flex items-center pt-56 overflow-hidden">
       <div className="absolute inset-0">
         <img src={heroBackground} alt="Professional woman in office" className="w-full h-full object-cover object-center" />
         <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/70 to-transparent"></div>
