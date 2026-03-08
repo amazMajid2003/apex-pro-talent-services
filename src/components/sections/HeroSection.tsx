@@ -17,13 +17,13 @@ export const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center pt-56 overflow-hidden">
+    <section className="relative min-h-screen flex items-center pt-32 sm:pt-40 lg:pt-56 overflow-hidden">
       <div className="absolute inset-0">
         <img src={heroBackground} alt="Professional woman in office" className="w-full h-full object-cover object-center" />
         <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/70 to-transparent"></div>
       </div>
 
-      <div className="container-main relative z-10 px-4 py-16 md:py-24">
+      <div className="container-main relative z-10 px-4 py-12 sm:py-16 md:py-24">
         <div className="max-w-2xl">
           <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="heading-hero text-primary-foreground mb-8">
             {t("hero.title1")}<br />

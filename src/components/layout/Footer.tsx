@@ -44,19 +44,19 @@ export const Footer = ({ showAllEmails = false }: FooterProps) => {
     <footer className="bg-primary text-primary-foreground">
       {/* CTA Banner */}
       <div className="bg-secondary">
-        <div className="container-main px-4 py-8 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div>
-            <h3 className="text-2xl font-heading font-bold text-secondary-foreground">{t("footer.readyTitle")}</h3>
-            <p className="text-secondary-foreground/90 mt-1">{t("footer.readyDesc")}</p>
+        <div className="container-main px-4 py-6 sm:py-8 flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
+          <div className="text-center sm:text-left">
+            <h3 className="text-xl sm:text-2xl font-heading font-bold text-secondary-foreground">{t("footer.readyTitle")}</h3>
+            <p className="text-secondary-foreground/90 mt-1 text-sm sm:text-base">{t("footer.readyDesc")}</p>
           </div>
-          <div className="flex gap-3">
+          <div className="flex gap-3 flex-shrink-0">
             <Link to="/search">
-              <Button variant="outline" className="bg-background text-primary border-background hover:bg-background/90 hover:text-primary">
+              <Button variant="outline" className="bg-background text-primary border-background hover:bg-background/90 hover:text-primary text-sm sm:text-base">
                 {t("footer.findJobs")}
               </Button>
             </Link>
             <Link to="/contact">
-              <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
+              <Button className="bg-primary text-primary-foreground hover:bg-primary/90 text-sm sm:text-base">
                 {t("footer.contactUs")} <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </Link>
@@ -66,13 +66,13 @@ export const Footer = ({ showAllEmails = false }: FooterProps) => {
 
       {/* Main footer content */}
       <div className="container-main section-padding">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
-          <div className="lg:col-span-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
+          <div className="sm:col-span-2">
             <Link to="/" className="flex items-center gap-3 mb-6">
-              <img alt="Apex Pro Talent Services" className="h-36 w-auto" src={logoPng} />
+              <img alt="Apex Pro Talent Services" className="h-24 sm:h-28 lg:h-36 w-auto" src={logoPng} />
               <div>
-                <span className="text-3xl font-heading font-bold tracking-tight block">Apex Pro</span>
-                <span className="text-base font-medium tracking-wider text-primary-foreground/80">Talent Services</span>
+                <span className="text-2xl lg:text-3xl font-heading font-bold tracking-tight block">Apex Pro</span>
+                <span className="text-sm lg:text-base font-medium tracking-wider text-primary-foreground/80">Talent Services</span>
               </div>
             </Link>
             <p className="text-primary-foreground/70 mb-6 max-w-sm">{t("footer.tagline")}</p>
@@ -142,17 +142,17 @@ export const Footer = ({ showAllEmails = false }: FooterProps) => {
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-primary-foreground/10">
-          <div className="flex gap-3 mb-4 md:mb-0">
+        <div className="flex flex-col items-center gap-4 pt-8 border-t border-primary-foreground/10 sm:flex-row sm:justify-between">
+          <div className="flex gap-3">
             {socialLinks.map(social => (
               <a key={social.label} href={social.href} className="w-10 h-10 rounded-full border border-primary-foreground/20 flex items-center justify-center hover:bg-secondary hover:border-secondary transition-all duration-200" aria-label={social.label}>
                 <social.icon className="w-4 h-4" />
               </a>
             ))}
           </div>
-          <div className="text-primary-foreground/50 text-sm text-center md:text-right">
+          <div className="text-primary-foreground/50 text-sm text-center sm:text-right">
             <p>{t("footer.copyright")}</p>
-            <div className="flex gap-4 justify-center md:justify-end mt-2">
+            <div className="flex gap-4 justify-center sm:justify-end mt-2 flex-wrap">
               <a href="#" className="hover:text-primary-foreground transition-colors">{t("footer.privacyPolicy")}</a>
               <a href="#" className="hover:text-primary-foreground transition-colors">{t("footer.termsOfUse")}</a>
               <a href="#" className="hover:text-primary-foreground transition-colors">{t("footer.accessibility")}</a>
