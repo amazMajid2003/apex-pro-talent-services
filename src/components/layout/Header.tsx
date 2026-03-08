@@ -89,7 +89,7 @@ export const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-4">
             {navItems.map(item => (
               <Link key={item.href} to={item.href} className="text-primary-foreground/90 hover:text-primary-foreground font-semibold text-lg transition-colors">
                 {item.label}
