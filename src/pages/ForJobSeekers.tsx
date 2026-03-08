@@ -90,7 +90,7 @@ const stats = [
                 <img
                   src={jobSeekerHero}
                   alt="Professional job seeker"
-                  className="w-full max-w-md h-[400px] object-cover rounded-lg shadow-2xl"
+                  className="w-full max-w-lg h-[450px] object-cover object-top rounded-lg shadow-2xl"
                 />
               </motion.div>
            </div>
