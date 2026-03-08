@@ -44,19 +44,19 @@ export const Footer = ({ showAllEmails = false }: FooterProps) => {
     <footer className="bg-primary text-primary-foreground">
       {/* CTA Banner */}
       <div className="bg-secondary">
-        <div className="container-main px-4 py-8 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div>
-            <h3 className="text-2xl font-heading font-bold text-secondary-foreground">{t("footer.readyTitle")}</h3>
-            <p className="text-secondary-foreground/90 mt-1">{t("footer.readyDesc")}</p>
+        <div className="container-main px-4 py-6 sm:py-8 flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
+          <div className="text-center sm:text-left">
+            <h3 className="text-xl sm:text-2xl font-heading font-bold text-secondary-foreground">{t("footer.readyTitle")}</h3>
+            <p className="text-secondary-foreground/90 mt-1 text-sm sm:text-base">{t("footer.readyDesc")}</p>
           </div>
-          <div className="flex gap-3">
+          <div className="flex gap-3 flex-shrink-0">
             <Link to="/search">
-              <Button variant="outline" className="bg-background text-primary border-background hover:bg-background/90 hover:text-primary">
+              <Button variant="outline" className="bg-background text-primary border-background hover:bg-background/90 hover:text-primary text-sm sm:text-base">
                 {t("footer.findJobs")}
               </Button>
             </Link>
             <Link to="/contact">
-              <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
+              <Button className="bg-primary text-primary-foreground hover:bg-primary/90 text-sm sm:text-base">
                 {t("footer.contactUs")} <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </Link>
