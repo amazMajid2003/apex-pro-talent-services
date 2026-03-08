@@ -31,7 +31,7 @@ export const Header = () => {
     <header className="sticky top-0 left-0 right-0 z-50">
       {/* Top bar */}
       <div className="bg-primary border-b border-navy-light/30">
-        <div className="flex items-center justify-end gap-4 text-sm flex-wrap">
+        <div className="flex items-center justify-end gap-4 text-sm flex-wrap px-4 py-1">
           <a href="tel:4169481058" className="flex items-center gap-1 text-primary-foreground/80 hover:text-primary-foreground transition-colors">
             <Phone className="w-3 h-3" />
             <span>416-948-1058</span>
@@ -74,7 +74,7 @@ export const Header = () => {
 
       {/* Main nav */}
       <nav className="bg-primary backdrop-blur-sm shadow-md">
-        <div className="container-main flex items-center justify-between py-0 px-4">
+        <div className="container-main flex items-center justify-between py-2 px-4">
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <img
@@ -124,7 +124,7 @@ export const Header = () => {
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden bg-primary border-t border-navy-light/30"
           >
-            <div className="flex flex-col">
+            <div className="flex flex-col px-4 py-2">
               {navItems.map(item => (
                 <Link key={item.href} to={item.href} className="text-primary-foreground/90 hover:text-primary-foreground font-medium py-2" onClick={() => setIsMenuOpen(false)}>
                   {item.label}
