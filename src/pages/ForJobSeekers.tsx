@@ -85,19 +85,13 @@ const stats = [
                 initial={{ opacity: 0, x: 30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="hidden lg:flex items-center justify-center relative"
+                className="hidden lg:flex items-center justify-center"
               >
-                <div className="relative w-96 h-[420px] overflow-hidden">
-                  <img
-                    src={jobSeekerHero}
-                    alt="Professional job seeker"
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary/70 via-transparent to-transparent" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/50 via-transparent to-transparent" />
-                  <div className="absolute inset-0 bg-gradient-to-b from-primary/20 via-transparent to-transparent" />
-                  <div className="absolute inset-0 bg-gradient-to-l from-primary/15 via-transparent to-transparent" />
-                </div>
+                <img
+                  src={jobSeekerHero}
+                  alt="Professional job seeker"
+                  className="w-80 h-auto object-cover rounded-lg shadow-2xl"
+                />
               </motion.div>
            </div>
          </section>
