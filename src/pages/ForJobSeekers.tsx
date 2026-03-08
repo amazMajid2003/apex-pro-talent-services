@@ -60,41 +60,36 @@ const stats = [
        <Header />
        <main>
          {/* Hero Section */}
-         <section className="relative min-h-[60vh] flex items-center bg-primary overflow-hidden">
-           <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/95 to-primary/80" />
-           <div className="container-main relative z-10 grid lg:grid-cols-2 gap-8 px-4 py-8">
-             <motion.div
-               initial={{ opacity: 0, x: -30 }}
-               animate={{ opacity: 1, x: 0 }}
-               transition={{ duration: 0.6 }}
-               className="flex flex-col justify-center"
-             >
-               <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-primary-foreground mb-6">
-                 Find your new job through us!
-               </h1>
-               <p className="text-lg text-primary-foreground/90 mb-8 max-w-xl">
-                 Looking to take the next step on your career ladder? Chances are you'll find an appealing, suitable job close to home in our job listings – full-time, part-time, temporary, permanent, you name it.
-               </p>
-               <Link to="/search">
-                 <Button size="lg" variant="secondary" className="w-fit text-lg px-8">
-                   Search Jobs
-                 </Button>
-               </Link>
-             </motion.div>
-            <motion.div
-                initial={{ opacity: 0, x: 30 }}
+        <section className="relative min-h-[60vh] flex items-center overflow-hidden">
+            <div className="absolute inset-0">
+              <img
+                src={jobSeekerHero}
+                alt="Professional job seeker"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/80 to-primary/50" />
+            </div>
+            <div className="container-main relative z-10 px-4 py-16">
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="hidden lg:flex items-center justify-center"
+                transition={{ duration: 0.6 }}
+                className="max-w-2xl"
               >
-                <img
-                  src={jobSeekerHero}
-                  alt="Professional job seeker"
-                  className="w-full max-w-md h-[400px] object-cover rounded-lg shadow-2xl"
-                />
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-primary-foreground mb-6">
+                  Find your new job through us!
+                </h1>
+                <p className="text-lg text-primary-foreground/90 mb-8 max-w-xl">
+                  Looking to take the next step on your career ladder? Chances are you'll find an appealing, suitable job close to home in our job listings – full-time, part-time, temporary, permanent, you name it.
+                </p>
+                <Link to="/search">
+                  <Button size="lg" variant="secondary" className="w-fit text-lg px-8">
+                    Search Jobs
+                  </Button>
+                </Link>
               </motion.div>
-           </div>
-         </section>
+            </div>
+          </section>
  
          {/* Stats Section */}
          <section className="py-12 bg-secondary">
