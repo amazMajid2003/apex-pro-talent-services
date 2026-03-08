@@ -99,12 +99,12 @@ export const Header = () => {
 
           {/* Right side actions */}
           <div className="hidden md:flex items-center gap-6">
-            <Link to="/blog" className="text-primary-foreground/90 hover:text-primary-foreground font-medium transition-colors">
+            <Link to="/blog" className="text-primary-foreground/90 hover:text-primary-foreground font-semibold text-lg transition-colors">
               {t("nav.blog")}
             </Link>
             <Link to="/search" className="flex items-center gap-2 text-primary-foreground/90 hover:text-primary-foreground transition-colors">
               <Search className="w-4 h-4" />
-              <span className="font-medium">{t("nav.searchJobs")}</span>
+              <span className="font-semibold text-lg">{t("nav.searchJobs")}</span>
             </Link>
           </div>
 
