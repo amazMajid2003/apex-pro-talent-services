@@ -51,7 +51,7 @@ export const Footer = ({ showAllEmails = false }: FooterProps) => {
           </div>
           <div className="flex gap-3">
             <Link to="/search">
-              <Button variant="outline" className="border-secondary-foreground/50 text-secondary-foreground bg-transparent hover:bg-secondary-foreground/10 hover:text-secondary-foreground">
+              <Button variant="outline" className="bg-background text-primary border-background hover:bg-background/90 hover:text-primary">
                 {t("footer.findJobs")}
               </Button>
             </Link>
