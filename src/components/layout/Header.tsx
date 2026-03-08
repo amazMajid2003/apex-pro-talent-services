@@ -98,7 +98,7 @@ export const Header = () => {
           </div>
 
           {/* Right side actions */}
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden md:flex items-center gap-4">
             <Link to="/blog" className="text-primary-foreground/90 hover:text-primary-foreground font-semibold text-lg transition-colors">
               {t("nav.blog")}
             </Link>
