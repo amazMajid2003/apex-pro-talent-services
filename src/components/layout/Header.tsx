@@ -74,7 +74,7 @@ export const Header = () => {
 
       {/* Main nav */}
       <nav className="bg-primary backdrop-blur-sm shadow-md">
-        <div className="container-main flex items-center justify-between py-0 px-0">
+        <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
             <img
