@@ -93,10 +93,10 @@ const stats = [
                     alt="Professional job seeker"
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary via-transparent to-transparent" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent" />
-                  <div className="absolute inset-0 bg-gradient-to-b from-primary/40 via-transparent to-transparent" />
-                  <div className="absolute inset-0 bg-gradient-to-l from-primary/30 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary/70 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/50 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-b from-primary/20 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-l from-primary/15 via-transparent to-transparent" />
                 </div>
               </motion.div>
            </div>
