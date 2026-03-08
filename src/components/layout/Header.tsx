@@ -31,7 +31,7 @@ export const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-50">
       {/* Top bar */}
       <div className="bg-primary border-b border-navy-light/30">
-        <div className="container-main flex items-center justify-end gap-4 py-1 px-4 text-sm flex-wrap">
+        <div className="flex items-center justify-end gap-4 text-sm flex-wrap">
           <a href="tel:4169481058" className="flex items-center gap-1 text-primary-foreground/80 hover:text-primary-foreground transition-colors">
             <Phone className="w-3 h-3" />
             <span>416-948-1058</span>
