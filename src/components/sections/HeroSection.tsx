@@ -23,7 +23,7 @@ export const HeroSection = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/70 to-transparent"></div>
       </div>
 
-      <div className="container-main relative z-10 px-4 py-16 md:py-24">
+      <div className="container-main relative z-10 px-4 py-12 sm:py-16 md:py-24">
         <div className="max-w-2xl">
           <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="heading-hero text-primary-foreground mb-8">
             {t("hero.title1")}<br />
