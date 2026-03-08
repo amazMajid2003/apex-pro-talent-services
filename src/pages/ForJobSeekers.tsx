@@ -90,7 +90,7 @@ const stats = [
                 <img
                   src={jobSeekerHero}
                   alt="Professional job seeker"
-                  className="w-full max-w-lg rounded-lg shadow-2xl"
+                  className="w-full max-w-lg rounded-lg shadow-2xl mix-blend-luminosity opacity-90"
                 />
               </motion.div>
            </div>
