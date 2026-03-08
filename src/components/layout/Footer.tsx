@@ -12,7 +12,11 @@ const socialLinks = [
   { icon: Youtube, href: "#", label: "YouTube" },
 ];
 
-export const Footer = () => {
+interface FooterProps {
+  showAllEmails?: boolean;
+}
+
+export const Footer = ({ showAllEmails = false }: FooterProps) => {
   const { t } = useTranslation();
 
   const footerLinks = {
