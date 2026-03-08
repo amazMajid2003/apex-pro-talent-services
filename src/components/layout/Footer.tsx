@@ -66,10 +66,10 @@ export const Footer = ({ showAllEmails = false }: FooterProps) => {
 
       {/* Main footer content */}
       <div className="container-main section-padding">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
-          <div className="lg:col-span-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
+          <div className="sm:col-span-2">
             <Link to="/" className="flex items-center gap-3 mb-6">
-              <img alt="Apex Pro Talent Services" className="h-36 w-auto" src={logoPng} />
+              <img alt="Apex Pro Talent Services" className="h-24 sm:h-28 lg:h-36 w-auto" src={logoPng} />
               <div>
                 <span className="text-3xl font-heading font-bold tracking-tight block">Apex Pro</span>
                 <span className="text-base font-medium tracking-wider text-primary-foreground/80">Talent Services</span>
