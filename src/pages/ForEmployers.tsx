@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Users, Lightbulb, Briefcase, TrendingUp, Plane, Car, Zap, Building2, Landmark, Hotel, Pill, Package, Factory, HeartPulse, Laptop, Radio } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import employersHero from "@/assets/employers-hero.jpg";
+import ladyWarehouseWorker from "@/assets/lady-warehouse-worker.jpg";
 import warehouseWorkers from "@/assets/warehouse-workers.jpg";
 import ctaBanner from "@/assets/cta-banner.jpg";
 import careerTraining from "@/assets/career-training.jpg";
@@ -98,10 +98,10 @@ const ForEmployers = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="hidden lg:flex items-center justify-center">
               
-               <img
-
-                alt="Professional workforce solutions"
-                className="w-80 h-auto object-cover rounded-lg shadow-2xl" src="/lovable-uploads/9b098020-d550-43b9-a84c-6655ed4bddc5.jpg" />
+                <img
+                 src={ladyWarehouseWorker}
+                 alt="Professional workforce solutions"
+                 className="w-full max-w-md h-[400px] object-cover rounded-lg shadow-2xl" />
               
              </motion.div>
            </div>
