@@ -142,17 +142,17 @@ export const Footer = ({ showAllEmails = false }: FooterProps) => {
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-primary-foreground/10">
-          <div className="flex gap-3 mb-4 md:mb-0">
+        <div className="flex flex-col items-center gap-4 pt-8 border-t border-primary-foreground/10 sm:flex-row sm:justify-between">
+          <div className="flex gap-3">
             {socialLinks.map(social => (
               <a key={social.label} href={social.href} className="w-10 h-10 rounded-full border border-primary-foreground/20 flex items-center justify-center hover:bg-secondary hover:border-secondary transition-all duration-200" aria-label={social.label}>
                 <social.icon className="w-4 h-4" />
               </a>
             ))}
           </div>
-          <div className="text-primary-foreground/50 text-sm text-center md:text-right">
+          <div className="text-primary-foreground/50 text-sm text-center sm:text-right">
             <p>{t("footer.copyright")}</p>
-            <div className="flex gap-4 justify-center md:justify-end mt-2">
+            <div className="flex gap-4 justify-center sm:justify-end mt-2 flex-wrap">
               <a href="#" className="hover:text-primary-foreground transition-colors">{t("footer.privacyPolicy")}</a>
               <a href="#" className="hover:text-primary-foreground transition-colors">{t("footer.termsOfUse")}</a>
               <a href="#" className="hover:text-primary-foreground transition-colors">{t("footer.accessibility")}</a>
