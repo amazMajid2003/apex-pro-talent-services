@@ -28,22 +28,22 @@ export const Header = () => {
   };
 
   return (
-    <header className="sticky top-0 left-0 right-0 z-50">
+    <header className="fixed top-0 left-0 right-0 z-50">
       {/* Top bar */}
-      <div className="bg-primary border-b border-navy-light/30">
-        <div className="flex items-center justify-end gap-4 text-sm flex-wrap px-4 py-1">
-          <a href="tel:4169481058" className="flex items-center gap-1 text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+      <div className="bg-primary border-b border-navy-light/20">
+        <div className="container-main flex items-center justify-end gap-6 text-sm flex-wrap px-6 py-1.5">
+          <a href="tel:4169481058" className="flex items-center gap-1.5 text-primary-foreground/70 hover:text-primary-foreground transition-colors">
             <Phone className="w-3 h-3" />
             <span>416-948-1058</span>
           </a>
-          <a href="mailto:Info@atspro.ca" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+          <a href="mailto:Info@atspro.ca" className="text-primary-foreground/70 hover:text-primary-foreground transition-colors">
             {t("nav.contactUs")}
           </a>
           {/* Language Dropdown */}
           <div className="relative">
             <button
               onClick={() => setIsLangOpen(!isLangOpen)}
-              className="flex items-center gap-1 text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+              className="flex items-center gap-1.5 text-primary-foreground/70 hover:text-primary-foreground transition-colors"
             >
               <span className="w-4 h-4 rounded-full bg-secondary/20 flex items-center justify-center text-xs">{currentLang.flag}</span>
               <span>{currentLang.country} ({currentLang.label})</span>
@@ -73,10 +73,10 @@ export const Header = () => {
       </div>
 
       {/* Main nav */}
-      <nav className="bg-primary backdrop-blur-sm shadow-md">
-        <div className="container-main flex items-center justify-between py-2 px-4">
+      <nav className="bg-primary/95 backdrop-blur-md shadow-lg border-b border-navy-light/10">
+        <div className="container-main flex items-center justify-between py-3 px-6">
           {/* Logo */}
-          <Link to="/" className="flex items-center">
+          <Link to="/" className="flex items-center gap-3">
             <img
               alt="Apex Pro Talent Services"
               className="h-16 w-auto"
@@ -89,9 +89,9 @@ export const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden md:flex items-center gap-8">
             {navItems.map(item => (
-              <Link key={item.href} to={item.href} className="text-primary-foreground/90 hover:text-primary-foreground font-semibold text-lg transition-colors">
+              <Link key={item.href} to={item.href} className="text-primary-foreground/85 hover:text-primary-foreground font-semibold text-base tracking-wide transition-colors py-1 border-b-2 border-transparent hover:border-secondary">
                 {item.label}
               </Link>
             ))}
