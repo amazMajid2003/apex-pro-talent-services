@@ -124,7 +124,7 @@ export const Header = () => {
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden bg-primary border-t border-navy-light/30"
           >
-            <div className="container-main py-4 px-4 flex flex-col gap-4">
+            <div className="flex flex-col">
               {navItems.map(item => (
                 <Link key={item.href} to={item.href} className="text-primary-foreground/90 hover:text-primary-foreground font-medium py-2" onClick={() => setIsMenuOpen(false)}>
                   {item.label}
