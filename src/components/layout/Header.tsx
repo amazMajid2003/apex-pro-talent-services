@@ -91,7 +91,7 @@ export const Header = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {navItems.map(item => (
-              <Link key={item.href} to={item.href} className="text-primary-foreground/85 hover:text-primary-foreground font-semibold text-base tracking-wide transition-colors py-1 border-b-2 border-transparent hover:border-secondary">
+              <Link key={item.href} to={item.href} className="text-primary-foreground/85 hover:text-primary-foreground font-semibold text-lg tracking-wide transition-colors py-1 border-b-2 border-transparent hover:border-secondary">
                 {item.label}
               </Link>
             ))}
