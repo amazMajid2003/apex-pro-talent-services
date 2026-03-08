@@ -1,74 +1,74 @@
- import { Header } from "@/components/layout/Header";
- import { Footer } from "@/components/layout/Footer";
- import { Button } from "@/components/ui/button";
- import { ArrowUp, Users, Award, GraduationCap, Headphones, Bell } from "lucide-react";
- import { motion } from "framer-motion";
- import { Link } from "react-router-dom";
- import jobSeekerHero from "@/assets/job-seeker-hero.jpg";
- import ctaBanner from "@/assets/cta-banner.jpg";
- import blogRobots from "@/assets/blog-robots.jpg";
- import blogSoftSkills from "@/assets/blog-soft-skills.jpg";
- import blogAnalytics from "@/assets/blog-analytics.jpg";
- 
+import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
+import { Button } from "@/components/ui/button";
+import { ArrowUp, Users, Award, GraduationCap, Headphones, Bell } from "lucide-react";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import jobSeekerHero from "@/assets/job-seeker-hero.jpg";
+import ctaBanner from "@/assets/cta-banner.jpg";
+import blogRobots from "@/assets/blog-robots.jpg";
+import blogSoftSkills from "@/assets/blog-soft-skills.jpg";
+import blogAnalytics from "@/assets/blog-analytics.jpg";
+
 const stats = [
-    { value: "24/7", label: "round-the-clock workforce solutions" },
-    { value: "10+", label: "industries served across Canada" },
-    { value: "100%", label: "Canadian-owned and operated" },
-  ];
- 
- const services = [
-   {
-     icon: Users,
-     title: "Career Success",
-     description: "You will find your way to work with us. Read more about the benefits of working for us, skills training programs offered, the types of jobs we offer and what you can expect.",
-   },
-   {
-     icon: GraduationCap,
-     title: "Skills Training Program",
-     description: "Associates are offered skills training via programs such as MyPath and powerYOU that offers a variety of course selections.",
-   },
-   {
-     icon: Award,
-     title: "Earn Medals of Recognition",
-     description: "As an Associate, you can earn medals that appear in your profile and are a testament to your success at work!",
-   },
-   {
-     icon: Headphones,
-     title: "Working with your Dedicated Talent Agent",
-     description: "Our Talent Agents and Recruiters hold local market expertise and are dedicated to using that knowledge to guide, support and connect you to jobs.",
-   },
- ];
- 
- const insights = [
-   {
-     image: blogRobots,
-     title: "Handling with Care: Safety Tips for a Forklift Operator",
-   },
-   {
-     image: blogSoftSkills,
-     title: "Tips for Writing an Effective Resume and Cover Letter",
-   },
-   {
-     image: blogAnalytics,
-     title: "Behind Every Great Office: The Role of Administrative Assistants",
-   },
- ];
- 
- const ForJobSeekers = () => {
-   return (
-     <div className="min-h-screen bg-background">
+{ value: "24/7", label: "round-the-clock workforce solutions" },
+{ value: "10+", label: "industries served across Canada" },
+{ value: "100%", label: "Canadian-owned and operated" }];
+
+
+const services = [
+{
+  icon: Users,
+  title: "Career Success",
+  description: "You will find your way to work with us. Read more about the benefits of working for us, skills training programs offered, the types of jobs we offer and what you can expect."
+},
+{
+  icon: GraduationCap,
+  title: "Skills Training Program",
+  description: "Associates are offered skills training via programs such as MyPath and powerYOU that offers a variety of course selections."
+},
+{
+  icon: Award,
+  title: "Earn Medals of Recognition",
+  description: "As an Associate, you can earn medals that appear in your profile and are a testament to your success at work!"
+},
+{
+  icon: Headphones,
+  title: "Working with your Dedicated Talent Agent",
+  description: "Our Talent Agents and Recruiters hold local market expertise and are dedicated to using that knowledge to guide, support and connect you to jobs."
+}];
+
+
+const insights = [
+{
+  image: blogRobots,
+  title: "Handling with Care: Safety Tips for a Forklift Operator"
+},
+{
+  image: blogSoftSkills,
+  title: "Tips for Writing an Effective Resume and Cover Letter"
+},
+{
+  image: blogAnalytics,
+  title: "Behind Every Great Office: The Role of Administrative Assistants"
+}];
+
+
+const ForJobSeekers = () => {
+  return (
+    <div className="min-h-screen bg-background">
        <Header />
-       <main>
+       <main className="pt-24">
          {/* Hero Section */}
          <section className="relative min-h-[60vh] flex items-center bg-primary overflow-hidden">
            <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/95 to-primary/80" />
            <div className="container-main relative z-10 grid lg:grid-cols-2 gap-8 px-4 py-8">
              <motion.div
-               initial={{ opacity: 0, x: -30 }}
-               animate={{ opacity: 1, x: 0 }}
-               transition={{ duration: 0.6 }}
-               className="flex flex-col justify-center"
-             >
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              className="flex flex-col justify-center">
+              
                <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-primary-foreground mb-6">
                  Find your new job through us!
                </h1>
@@ -81,18 +81,18 @@ const stats = [
                  </Button>
                </Link>
              </motion.div>
-            <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="hidden lg:flex items-center justify-center"
-              >
-                <img
-                  src={jobSeekerHero}
-                  alt="Professional job seeker"
-                  className="w-full max-w-md h-[400px] object-cover rounded-lg shadow-2xl"
-                />
-              </motion.div>
+             <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="hidden lg:flex items-center justify-center">
+              
+               <img
+                src={jobSeekerHero}
+                alt="Professional job seeker"
+                className="w-80 h-auto rounded-lg shadow-2xl object-cover" />
+              
+             </motion.div>
            </div>
          </section>
  
@@ -100,22 +100,22 @@ const stats = [
          <section className="py-12 bg-secondary">
            <div className="container-main px-4">
              <div className="grid md:grid-cols-3 gap-8">
-               {stats.map((stat, index) => (
-                 <motion.div
-                   key={index}
-                   initial={{ opacity: 0, y: 20 }}
-                   whileInView={{ opacity: 1, y: 0 }}
-                   viewport={{ once: true }}
-                   transition={{ delay: index * 0.1 }}
-                   className="flex items-center gap-4"
-                 >
+               {stats.map((stat, index) =>
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="flex items-center gap-4">
+                
                    <div className="flex items-center gap-2">
                      <span className="text-4xl font-bold text-secondary-foreground">{stat.value}</span>
                      <ArrowUp className="w-6 h-6 text-secondary-foreground" />
                    </div>
                    <p className="text-secondary-foreground/80">{stat.label}</p>
                  </motion.div>
-               ))}
+              )}
              </div>
            </div>
          </section>
@@ -124,11 +124,11 @@ const stats = [
           <section className="py-10 bg-background">
            <div className="container-main px-4">
              <motion.div
-               initial={{ opacity: 0, y: 20 }}
-               whileInView={{ opacity: 1, y: 0 }}
-               viewport={{ once: true }}
-               className="max-w-3xl"
-             >
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="max-w-3xl">
+              
                <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
                  MyPath
                </h2>
@@ -151,15 +151,15 @@ const stats = [
                What We Do For You
              </h2>
              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-               {services.map((service, index) => (
-                 <motion.div
-                   key={index}
-                   initial={{ opacity: 0, y: 20 }}
-                   whileInView={{ opacity: 1, y: 0 }}
-                   viewport={{ once: true }}
-                   transition={{ delay: index * 0.1 }}
-                   className="bg-card p-6 rounded-lg border border-border hover:shadow-lg transition-shadow"
-                 >
+               {services.map((service, index) =>
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-card p-6 rounded-lg border border-border hover:shadow-lg transition-shadow">
+                
                    <service.icon className="w-12 h-12 text-secondary mb-4" />
                    <h3 className="text-xl font-heading font-semibold text-card-foreground mb-3">
                      {service.title}
@@ -168,7 +168,7 @@ const stats = [
                      {service.description}
                    </p>
                  </motion.div>
-               ))}
+              )}
              </div>
            </div>
          </section>
@@ -177,10 +177,10 @@ const stats = [
          <section className="relative py-10">
            <div className="absolute inset-0">
              <img
-               src={ctaBanner}
-               alt="Career growth"
-               className="w-full h-full object-cover"
-             />
+              src={ctaBanner}
+              alt="Career growth"
+              className="w-full h-full object-cover" />
+            
              <div className="absolute inset-0 bg-gradient-to-r from-primary/90 to-primary/70" />
            </div>
            <div className="container-main relative z-10 px-4 text-center">
@@ -210,21 +210,21 @@ const stats = [
                </Link>
              </div>
              <div className="grid md:grid-cols-3 gap-8">
-               {insights.map((insight, index) => (
-                 <motion.article
-                   key={index}
-                   initial={{ opacity: 0, y: 20 }}
-                   whileInView={{ opacity: 1, y: 0 }}
-                   viewport={{ once: true }}
-                   transition={{ delay: index * 0.1 }}
-                   className="group cursor-pointer"
-                 >
+               {insights.map((insight, index) =>
+              <motion.article
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="group cursor-pointer">
+                
                    <div className="aspect-video rounded-lg overflow-hidden mb-4">
                      <img
-                       src={insight.image}
-                       alt={insight.title}
-                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                     />
+                    src={insight.image}
+                    alt={insight.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                  
                    </div>
                    <h3 className="font-heading font-semibold text-lg text-card-foreground group-hover:text-secondary transition-colors">
                      {insight.title}
@@ -233,7 +233,7 @@ const stats = [
                      Read More
                    </span>
                  </motion.article>
-               ))}
+              )}
              </div>
            </div>
          </section>
@@ -257,8 +257,8 @@ const stats = [
          </section>
        </main>
        <Footer />
-     </div>
-   );
- };
- 
- export default ForJobSeekers;
+     </div>);
+
+};
+
+export default ForJobSeekers;
