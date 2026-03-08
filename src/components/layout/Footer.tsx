@@ -71,8 +71,8 @@ export const Footer = ({ showAllEmails = false }: FooterProps) => {
             <Link to="/" className="flex items-center gap-3 mb-6">
               <img alt="Apex Pro Talent Services" className="h-36 w-auto" src={logoPng} />
               <div>
-                <span className="text-xl font-heading font-bold tracking-tight block">Apex Pro</span>
-                <span className="text-xs font-medium tracking-wider text-primary-foreground/80">Talent Services</span>
+                <span className="text-3xl font-heading font-bold tracking-tight block">Apex Pro</span>
+                <span className="text-base font-medium tracking-wider text-primary-foreground/80">Talent Services</span>
               </div>
             </Link>
             <p className="text-primary-foreground/70 mb-6 max-w-sm">{t("footer.tagline")}</p>
