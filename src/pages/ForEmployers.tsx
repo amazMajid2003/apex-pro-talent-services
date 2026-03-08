@@ -322,22 +322,6 @@ const ForEmployers = () => {
            </div>
          </section>
  
-         {/* Contact CTA */}
-         <section className="py-8 bg-primary">
-           <div className="container-main px-4 text-center">
-             <h2 className="text-2xl md:text-3xl font-heading font-bold text-primary-foreground mb-4">
-               Let's Connect
-             </h2>
-             <p className="text-primary-foreground/80 mb-6 max-w-xl mx-auto">
-               Tell us what your business needs are. We will create value together with you.
-             </p>
-             <Link to="/contact">
-               <Button size="lg" variant="secondary">
-                 Contact Us
-               </Button>
-             </Link>
-           </div>
-         </section>
        </main>
        <Footer />
      </div>);
