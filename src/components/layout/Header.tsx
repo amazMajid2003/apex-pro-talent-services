@@ -79,12 +79,12 @@ export const Header = () => {
           <Link to="/" className="flex items-center gap-3">
             <img
               alt="Apex Pro Talent Services"
-              className="h-16 w-auto"
+              className="h-20 w-auto"
               src={logoPng}
             />
-            <span className="text-lg font-heading font-bold text-primary-foreground tracking-tight leading-tight hidden sm:block">
+            <span className="text-2xl font-heading font-bold text-primary-foreground tracking-tight leading-tight hidden sm:block">
               Apex Pro<br />
-              <span className="text-xs font-medium tracking-wider text-primary-foreground/80">Talent Services</span>
+              <span className="text-sm font-medium tracking-wider text-primary-foreground/80">Talent Services</span>
             </span>
           </Link>
 
