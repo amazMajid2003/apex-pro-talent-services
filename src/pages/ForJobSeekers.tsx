@@ -58,7 +58,7 @@ const stats = [
    return (
      <div className="min-h-screen bg-background">
        <Header />
-       <main className="pt-24">
+       <main>
          {/* Hero Section */}
          <section className="relative min-h-[60vh] flex items-center bg-primary overflow-hidden">
            <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/95 to-primary/80" />

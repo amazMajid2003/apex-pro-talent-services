@@ -43,7 +43,7 @@ import { useToast } from "@/hooks/use-toast";
    return (
      <div className="min-h-screen bg-background">
        <Header />
-       <main className="pt-24">
+       <main>
          {/* Hero Section */}
          <section className="bg-primary py-8">
            <div className="container-main px-4">

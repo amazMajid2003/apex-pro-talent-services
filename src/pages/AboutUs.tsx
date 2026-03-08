@@ -21,7 +21,7 @@ const AboutUs = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <main className="pt-24">
+      <main>
         {/* Hero Section */}
         <section className="relative min-h-[60vh] flex items-center overflow-hidden">
           <div className="absolute inset-0">
