@@ -99,7 +99,7 @@ const ForEmployers = () => {
               className="hidden lg:flex items-center justify-center">
               
                 <img
-                 src={ladyWarehouseWorker}
+                 src={employerHeroWorker}
                  alt="Professional workforce solutions"
                  className="w-full max-w-md h-[400px] object-cover rounded-lg shadow-2xl" />
               
