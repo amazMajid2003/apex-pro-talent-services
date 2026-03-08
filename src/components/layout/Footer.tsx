@@ -12,7 +12,11 @@ const socialLinks = [
   { icon: Youtube, href: "#", label: "YouTube" },
 ];
 
-export const Footer = () => {
+interface FooterProps {
+  showAllEmails?: boolean;
+}
+
+export const Footer = ({ showAllEmails = false }: FooterProps) => {
   const { t } = useTranslation();
 
   const footerLinks = {
@@ -85,18 +89,22 @@ export const Footer = () => {
                 <Mail className="w-4 h-4 text-secondary flex-shrink-0" />
                 <a href="mailto:Info@atspro.ca" className="hover:text-primary-foreground transition-colors">Info@atspro.ca</a>
               </div>
-              <div className="flex items-center gap-3">
-                <Mail className="w-4 h-4 text-secondary flex-shrink-0" />
-                <a href="mailto:Sales@atspro.ca" className="hover:text-primary-foreground transition-colors">Sales@atspro.ca</a>
-              </div>
-              <div className="flex items-center gap-3">
-                <Mail className="w-4 h-4 text-secondary flex-shrink-0" />
-                <a href="mailto:jobs@atspro.ca" className="hover:text-primary-foreground transition-colors">jobs@atspro.ca</a>
-              </div>
-              <div className="flex items-center gap-3">
-                <Mail className="w-4 h-4 text-secondary flex-shrink-0" />
-                <a href="mailto:Accounts@atspro.ca" className="hover:text-primary-foreground transition-colors">Accounts@atspro.ca</a>
-              </div>
+              {showAllEmails && (
+                <>
+                  <div className="flex items-center gap-3">
+                    <Mail className="w-4 h-4 text-secondary flex-shrink-0" />
+                    <a href="mailto:Sales@atspro.ca" className="hover:text-primary-foreground transition-colors">Sales@atspro.ca</a>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Mail className="w-4 h-4 text-secondary flex-shrink-0" />
+                    <a href="mailto:jobs@atspro.ca" className="hover:text-primary-foreground transition-colors">jobs@atspro.ca</a>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Mail className="w-4 h-4 text-secondary flex-shrink-0" />
+                    <a href="mailto:Accounts@atspro.ca" className="hover:text-primary-foreground transition-colors">Accounts@atspro.ca</a>
+                  </div>
+                </>
+              )}
             </div>
           </div>
 

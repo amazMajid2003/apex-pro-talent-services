@@ -202,7 +202,7 @@ import { useToast } from "@/hooks/use-toast";
          </section>
  
        </main>
-       <Footer />
+       <Footer showAllEmails />
      </div>
    );
  };
