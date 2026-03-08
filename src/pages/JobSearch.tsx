@@ -316,20 +316,6 @@
            </div>
          </section>
  
-         {/* CTA */}
-         <section className="py-8 bg-primary">
-           <div className="container-main px-4 text-center">
-             <h2 className="text-2xl md:text-3xl font-heading font-bold text-primary-foreground mb-4">
-               Can't find what you're looking for?
-             </h2>
-             <p className="text-primary-foreground/80 mb-6 max-w-xl mx-auto">
-               Create a profile and let us find the perfect job for you. Get personalized job alerts delivered to your inbox.
-             </p>
-             <Button size="lg" variant="secondary">
-               Create Your Profile
-             </Button>
-           </div>
-         </section>
        </main>
        <Footer />
      </div>
