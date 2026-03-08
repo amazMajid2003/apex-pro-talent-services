@@ -79,19 +79,19 @@ export const Header = () => {
           <Link to="/" className="flex items-center gap-3">
             <img
               alt="Apex Pro Talent Services"
-              className="h-16 w-auto"
+              className="h-20 w-auto"
               src={logoPng}
             />
-            <span className="text-lg font-heading font-bold text-primary-foreground tracking-tight leading-tight hidden sm:block">
+            <span className="text-2xl font-heading font-bold text-primary-foreground tracking-tight leading-tight hidden sm:block">
               Apex Pro<br />
-              <span className="text-xs font-medium tracking-wider text-primary-foreground/80">Talent Services</span>
+              <span className="text-sm font-medium tracking-wider text-primary-foreground/80">Talent Services</span>
             </span>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {navItems.map(item => (
-              <Link key={item.href} to={item.href} className="text-primary-foreground/85 hover:text-primary-foreground font-semibold text-base tracking-wide transition-colors py-1 border-b-2 border-transparent hover:border-secondary">
+              <Link key={item.href} to={item.href} className="text-primary-foreground/85 hover:text-primary-foreground font-semibold text-lg tracking-wide transition-colors py-1 border-b-2 border-transparent hover:border-secondary">
                 {item.label}
               </Link>
             ))}
@@ -99,12 +99,12 @@ export const Header = () => {
 
           {/* Right side actions */}
           <div className="hidden md:flex items-center gap-6">
-            <Link to="/blog" className="text-primary-foreground/85 hover:text-primary-foreground font-semibold text-base tracking-wide transition-colors py-1 border-b-2 border-transparent hover:border-secondary">
+            <Link to="/blog" className="text-primary-foreground/85 hover:text-primary-foreground font-semibold text-lg tracking-wide transition-colors py-1 border-b-2 border-transparent hover:border-secondary">
               {t("nav.blog")}
             </Link>
             <Link to="/search" className="flex items-center gap-2 text-primary-foreground/85 hover:text-primary-foreground transition-colors py-1">
-              <Search className="w-4 h-4" />
-              <span className="font-semibold text-base tracking-wide">{t("nav.searchJobs")}</span>
+              <Search className="w-5 h-5" />
+              <span className="font-semibold text-lg tracking-wide">{t("nav.searchJobs")}</span>
             </Link>
           </div>
 
