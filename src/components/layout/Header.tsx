@@ -76,7 +76,7 @@ export const Header = () => {
       <nav className="bg-primary backdrop-blur-sm shadow-md">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3">
+          <Link to="/" className="flex items-center">
             <img
               alt="Apex Pro Talent Services"
               className="h-40 w-auto"
