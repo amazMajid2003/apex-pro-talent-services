@@ -81,18 +81,18 @@ const stats = [
                  </Button>
                </Link>
              </motion.div>
-            <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="hidden lg:flex items-center justify-center"
-              >
-                <img
-                  src={jobSeekerHero}
-                  alt="Professional job seeker"
-                  className="w-full max-w-lg h-[450px] object-cover object-top rounded-lg shadow-2xl"
-                />
-              </motion.div>
+             <motion.div
+               initial={{ opacity: 0, x: 30 }}
+               animate={{ opacity: 1, x: 0 }}
+               transition={{ duration: 0.6, delay: 0.2 }}
+               className="hidden lg:flex items-center justify-center"
+             >
+               <img
+                 src={jobSeekerHero}
+                 alt="Professional job seeker"
+                 className="w-80 h-auto object-cover rounded-lg shadow-2xl"
+               />
+             </motion.div>
            </div>
          </section>
  
