@@ -28,7 +28,7 @@ export const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50">
+    <header className="sticky top-0 left-0 right-0 z-50">
       {/* Top bar */}
       <div className="bg-primary border-b border-navy-light/20">
         <div className="container-main flex items-center justify-end gap-6 text-sm flex-wrap px-6 py-1.5">
