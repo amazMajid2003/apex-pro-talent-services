@@ -1,55 +1,41 @@
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
-import { PersonalInfoStep } from "@/components/job-application/PersonalInfoStep";
-import { AgreementsQuizStep } from "@/components/job-application/AgreementsQuizStep";
-import { SymbolMatchingStep } from "@/components/job-application/SymbolMatchingStep";
-import { ChevronLeft, ChevronRight, Download, Send } from "lucide-react";
+import { Download, Send } from "lucide-react";
 import jsPDF from "jspdf";
 
-const initialPersonalInfo = {
-  lastName: "", firstName: "", initials: "", sin: "", dob: "", sex: "",
-  address: "", city: "", province: "", postalCode: "",
-  phoneHome: "", phoneCell: "", emergencyName: "", emergencyPhone: "",
-  highSchool: "", college: "", university: "",
-  wh1Position: "", wh1Salary: "", wh1Supervisor: "", wh1Phone: "", wh1From: "", wh1To: "", wh1ReasonLeft: "",
-  wh2Position: "", wh2Salary: "", wh2Supervisor: "", wh2Phone: "", wh2From: "", wh2To: "", wh2ReasonLeft: "",
+const industrialOptions = ["General Help", "Heavy Lifting", "Lighting/Lifting", "Packing", "Ingredient Mixer", "Food Handler", "Line Operator", "Material Handler", "Cleaner"];
+const skillsOptions = ["Forklift", "Tig Welding", "Mig Welding", "Construction", "Wood Work"];
+const officeOptions = ["Receptionist", "Data Entry", "Switch Board", "Book Keeping"];
+const driverOptions = ["AZ", "DZ", "GZ", "G"];
+const machineOptions = ["CNC", "Lathe", "Mould"];
+
+const initialData = {
+  lastName: "",
+  firstName: "",
+  sin: "",
+  dob: "",
+  sex: "",
+  address: "",
+  cityProvince: "",
+  postalCode: "",
+  highSchool: "",
+  college: "",
+  university: "",
   positions: [] as string[],
-  employmentType: "",
-  availability: {} as Record<string, boolean>,
-  safetyShoes: "",
-  transportation: "",
 };
 
-const initialAgreements = {
-  vacationAckName: "", payRate: "", vacationPay: "", totalPay: "",
-  vacationSigDate: "", overtimeSigDate: "",
-  whmisW: "", whmisH: "", whmisM: "", whmisI: "", whmisS: "",
-  whmisThreeParts: "",
-  safetyEquipment: "", readLabels: "", informSupervisor: "", leaveWithout: "", touchChemical: "",
-  math: {} as Record<string, string>,
-};
-
-const initialSymbol = {
-  symbolAnswers: {} as Record<string, string>,
-  agreementChecked: false,
-  signatureDate: "",
-};
-
-const steps = [
-  { label: "Personal Information", description: "Employment details & work history" },
-  { label: "Agreements & Quiz", description: "Vacation, overtime & WHMIS quiz" },
-  { label: "Symbol Matching & Terms", description: "WHMIS symbols & agreement" },
-];
-
-const generatePDF = (personal: typeof initialPersonalInfo, agreements: typeof initialAgreements, symbols: typeof initialSymbol) => {
+const generatePDF = (data: typeof initialData) => {
   const doc = new jsPDF();
   let y = 15;
   const lm = 15;
-  const pw = 180;
 
   const addTitle = (text: string) => {
     doc.setFontSize(14);
@@ -74,181 +60,73 @@ const generatePDF = (personal: typeof initialPersonalInfo, agreements: typeof in
     y += 5;
   };
 
-  // Page 1
   addTitle("APPLICATION FOR EMPLOYMENT");
   addTitle("Apex Pro Talent Services");
   y += 4;
   addSection("Personal Information");
-  addField("Name", `${personal.lastName}, ${personal.firstName} ${personal.initials}`);
-  addField("SIN", personal.sin);
-  addField("Date of Birth", personal.dob);
-  addField("Sex", personal.sex);
-  addField("Address", `${personal.address}, ${personal.city}, ${personal.postalCode}`);
-  addField("Phone (Home)", personal.phoneHome);
-  addField("Phone (Cell)", personal.phoneCell);
-  addField("Emergency Contact", `${personal.emergencyName} — ${personal.emergencyPhone}`);
+  addField("Name", `${data.lastName}, ${data.firstName}`);
+  addField("SIN", data.sin);
+  addField("Date of Birth", data.dob);
+  addField("Sex", data.sex);
+  addField("Address", data.address);
+  addField("City / Province", data.cityProvince);
+  addField("Postal Code", data.postalCode);
   y += 3;
-  addSection("Education");
-  addField("High School", personal.highSchool);
-  addField("College", personal.college);
-  addField("University", personal.university);
+  addSection("Level of Education");
+  addField("High School", data.highSchool);
+  addField("College", data.college);
+  addField("University", data.university);
   y += 3;
-  addSection("Work History — Present/Most Recent Employer");
-  addField("Position", personal.wh1Position);
-  addField("Salary", personal.wh1Salary);
-  addField("Supervisor", personal.wh1Supervisor);
-  addField("Phone", personal.wh1Phone);
-  addField("Period", `${personal.wh1From} — ${personal.wh1To}`);
-  addField("Reason Left", personal.wh1ReasonLeft);
-  y += 3;
-  addSection("Work History — Previous Employer");
-  addField("Position", personal.wh2Position);
-  addField("Salary", personal.wh2Salary);
-  addField("Supervisor", personal.wh2Supervisor);
-  addField("Phone", personal.wh2Phone);
-  addField("Period", `${personal.wh2From} — ${personal.wh2To}`);
-  addField("Reason Left", personal.wh2ReasonLeft);
-  y += 3;
-  addField("Positions Applied For", personal.positions.join(", "));
-  addField("Employment Type", personal.employmentType);
-  addField("Safety Shoes", personal.safetyShoes);
-  addField("Transportation", personal.transportation);
-
-  // Availability
-  const avail = Object.entries(personal.availability).filter(([, v]) => v).map(([k]) => k);
-  addField("Available Shifts", avail.join(", ") || "None selected");
-
-  // Page 2
-  doc.addPage();
-  y = 15;
-  addTitle("AGREEMENTS & WHMIS QUIZ");
-  y += 4;
-  addSection("Vacation Pay Agreement");
-  addField("Name", agreements.vacationAckName);
-  addField("Pay Rate", agreements.payRate);
-  addField("4% Vacation Pay", agreements.vacationPay);
-  addField("Date", agreements.vacationSigDate);
-  y += 3;
-  addSection("Overtime Agreement");
-  addField("Date", agreements.overtimeSigDate);
-  y += 3;
-  addSection("WHMIS Quiz");
-  addField("WHMIS stands for", `${agreements.whmisW} ${agreements.whmisH} ${agreements.whmisM} ${agreements.whmisI} ${agreements.whmisS}`);
-  addField("Three main parts", agreements.whmisThreeParts);
-  addField("Wear proper equipment", agreements.safetyEquipment);
-  addField("Read labels", agreements.readLabels);
-  addField("Inform supervisor", agreements.informSupervisor);
-  addField("Leave without informing", agreements.leaveWithout);
-  addField("Touch chemical spill", agreements.touchChemical);
-  y += 3;
-  addSection("Math Answers");
-  Object.entries(agreements.math).forEach(([k, v]) => addField(k, v));
-
-  // Page 3
-  doc.addPage();
-  y = 15;
-  addTitle("SYMBOL MATCHING & TERMS");
-  y += 4;
-  addSection("Symbol Matching Answers");
-  Object.entries(symbols.symbolAnswers).forEach(([k, v]) => addField(k, v));
-  y += 3;
-  addField("Terms Agreed", symbols.agreementChecked ? "Yes" : "No");
-  addField("Signature Date", symbols.signatureDate);
+  addSection("Position Applied For");
+  addField("Positions", data.positions.join(", ") || "—");
 
   return doc;
 };
 
 const JobApplication = () => {
   const { toast } = useToast();
-  const [step, setStep] = useState(0);
-  const [personalInfo, setPersonalInfo] = useState(initialPersonalInfo);
-  const [agreements, setAgreements] = useState(initialAgreements);
-  const [symbolData, setSymbolData] = useState(initialSymbol);
+  const [data, setData] = useState(initialData);
+  const [submitting, setSubmitting] = useState(false);
 
-  const handleNext = () => {
-    if (step === 0 && (!personalInfo.firstName || !personalInfo.lastName || !personalInfo.dob || !personalInfo.phoneCell)) {
-      toast({ title: "Required Fields", description: "Please fill in all required fields marked with *.", variant: "destructive" });
-      return;
-    }
-    setStep(s => Math.min(s + 1, 2));
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  const update = (patch: Partial<typeof initialData>) => setData(prev => ({ ...prev, ...patch }));
 
-  const handleBack = () => {
-    setStep(s => Math.max(s - 1, 0));
-    window.scrollTo({ top: 0, behavior: "smooth" });
+  const togglePosition = (pos: string) => {
+    const current = data.positions || [];
+    const updated = current.includes(pos) ? current.filter(p => p !== pos) : [...current, pos];
+    update({ positions: updated });
   };
 
   const handleDownload = () => {
-    const doc = generatePDF(personalInfo, agreements, symbolData);
-    doc.save(`Job_Application_${personalInfo.firstName}_${personalInfo.lastName}.pdf`);
+    const doc = generatePDF(data);
+    doc.save(`Job_Application_${data.firstName}_${data.lastName}.pdf`);
     toast({ title: "Downloaded!", description: "Your application has been saved as a PDF." });
   };
 
-  const handleSubmit = async () => {
-    if (!symbolData.agreementChecked || !symbolData.signatureDate) {
-      toast({ title: "Agreement Required", description: "Please agree to the terms and provide a date.", variant: "destructive" });
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!data.firstName || !data.lastName || !data.dob || !data.sex || !data.address || !data.cityProvince || !data.postalCode) {
+      toast({ title: "Required Fields", description: "Please fill in all required fields marked with *.", variant: "destructive" });
       return;
     }
+
+    setSubmitting(true);
 
     // Download PDF
     handleDownload();
 
     // Send data to Google Sheet
     const sheetData = {
-      first_name: personalInfo.firstName,
-      last_name: personalInfo.lastName,
-      initials: personalInfo.initials,
-      sin: personalInfo.sin,
-      date_of_birth: personalInfo.dob,
-      sex: personalInfo.sex,
-      address: personalInfo.address,
-      city_province: personalInfo.city + ", " + personalInfo.province,
-      postal_code: personalInfo.postalCode,
-      phone_home: personalInfo.phoneHome,
-      phone_cell: personalInfo.phoneCell,
-      emergency_contact_name: personalInfo.emergencyName,
-      emergency_contact_phone: personalInfo.emergencyPhone,
-      education_level: [personalInfo.highSchool, personalInfo.college, personalInfo.university].filter(Boolean).join(", "),
-      recent_position: personalInfo.wh1Position,
-      recent_salary: personalInfo.wh1Salary,
-      recent_supervisor: personalInfo.wh1Supervisor,
-      recent_phone: personalInfo.wh1Phone,
-      recent_from: personalInfo.wh1From,
-      recent_to: personalInfo.wh1To,
-      recent_reason_left: personalInfo.wh1ReasonLeft,
-      previous_position: personalInfo.wh2Position,
-      previous_salary: personalInfo.wh2Salary,
-      previous_supervisor: personalInfo.wh2Supervisor,
-      previous_phone: personalInfo.wh2Phone,
-      previous_from: personalInfo.wh2From,
-      previous_to: personalInfo.wh2To,
-      previous_reason_left: personalInfo.wh2ReasonLeft,
-      position_applied: personalInfo.positions,
-      availability: Object.entries(personalInfo.availability).filter(([,v])=>v).map(([k])=>k),
-      safety_shoes: personalInfo.safetyShoes,
-      transportation: personalInfo.transportation,
-      agreement_name: agreements.vacationAckName,
-      pay_rate: agreements.payRate,
-      vacation_pay: agreements.vacationPay,
-      agreement_date: agreements.vacationSigDate,
-      overtime_agreement_date: agreements.overtimeSigDate,
-      whmis_full_form: `${agreements.whmisW}${agreements.whmisH}${agreements.whmisM}${agreements.whmisI}${agreements.whmisS}`,
-      whmis_parts: agreements.whmisThreeParts,
-      safety_equipment: agreements.safetyEquipment,
-      read_labels: agreements.readLabels,
-      inform_supervisor: agreements.informSupervisor,
-      leave_without_notice: agreements.leaveWithout,
-      touch_spill: agreements.touchChemical,
-      math_answers: Object.values(agreements.math),
-      symbol_flammable: symbolData.symbolAnswers.sym1 || "",
-      symbol_reactive: symbolData.symbolAnswers.sym2 || "",
-      symbol_poison: symbolData.symbolAnswers.sym3 || "",
-      symbol_compressed_gas: symbolData.symbolAnswers.sym4 || "",
-      symbol_oxidizing: symbolData.symbolAnswers.sym5 || "",
-      symbol_biohazard: symbolData.symbolAnswers.sym6 || "",
-      terms_agreed: symbolData.agreementChecked ? "Yes" : "No",
-      final_date: symbolData.signatureDate,
+      first_name: data.firstName,
+      last_name: data.lastName,
+      sin: data.sin,
+      date_of_birth: data.dob,
+      sex: data.sex,
+      address: data.address,
+      city_province: data.cityProvince,
+      postal_code: data.postalCode,
+      education_level: [data.highSchool, data.college, data.university].filter(Boolean).join(", "),
+      position_applied: data.positions,
     };
 
     try {
@@ -259,11 +137,13 @@ const JobApplication = () => {
         body: JSON.stringify(sheetData),
       });
       toast({ title: "Application Submitted!", description: "Your application has been saved and the PDF downloaded." });
+      setData(initialData);
     } catch (err) {
       console.error("Sheet submission error:", err);
       toast({ title: "Application Saved", description: "PDF downloaded. There was an issue saving online — please email the PDF to info@atspro.ca.", variant: "destructive" });
+    } finally {
+      setSubmitting(false);
     }
-
   };
 
   return (
@@ -271,82 +151,126 @@ const JobApplication = () => {
       <Header />
       <main>
         {/* Hero */}
-        <section className="bg-primary py-6">
+        <section className="bg-primary py-8">
           <div className="container-main px-4">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center">
               <h1 className="text-3xl md:text-4xl font-heading font-bold text-primary-foreground mb-2">
                 Application for Employment
               </h1>
               <p className="text-primary-foreground/80 max-w-2xl mx-auto">
-                Complete all three sections below to submit your application. Your information is kept confidential.
+                Fill out the form below to submit your application. Your information is kept confidential.
               </p>
             </motion.div>
-          </div>
-        </section>
-
-        {/* Step Indicator */}
-        <section className="bg-muted border-b border-border">
-          <div className="container-main px-4 py-4">
-            <div className="flex items-center justify-center gap-2 md:gap-4">
-              {steps.map((s, i) => (
-                <button
-                  key={i}
-                  onClick={() => i <= step && setStep(i)}
-                  className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-all ${
-                    i === step ? "bg-primary text-primary-foreground font-semibold" :
-                    i < step ? "bg-primary/10 text-primary font-medium cursor-pointer" :
-                    "bg-background text-muted-foreground"
-                  }`}
-                >
-                  <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${
-                    i === step ? "bg-primary-foreground text-primary" :
-                    i < step ? "bg-primary text-primary-foreground" :
-                    "bg-border text-muted-foreground"
-                  }`}>{i + 1}</span>
-                  <span className="hidden md:inline">{s.label}</span>
-                </button>
-              ))}
-            </div>
           </div>
         </section>
 
         {/* Form */}
         <section className="py-8 bg-background">
           <div className="container-main px-4 max-w-4xl mx-auto">
-            {step === 0 && (
-              <PersonalInfoStep data={personalInfo} onChange={d => setPersonalInfo(prev => ({ ...prev, ...d }))} />
-            )}
-            {step === 1 && (
-              <AgreementsQuizStep data={agreements} onChange={d => setAgreements(prev => ({ ...prev, ...d }))} />
-            )}
-            {step === 2 && (
-              <SymbolMatchingStep data={symbolData} onChange={d => setSymbolData(prev => ({ ...prev, ...d }))} />
-            )}
+            <form onSubmit={handleSubmit} className="space-y-8">
+              {/* Personal Information */}
+              <div>
+                <h3 className="text-lg font-heading font-bold text-foreground mb-4 border-b border-border pb-2">Personal Information</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <Label htmlFor="lastName">Last Name *</Label>
+                    <Input id="lastName" required value={data.lastName} onChange={e => update({ lastName: e.target.value })} className="mt-1" />
+                  </div>
+                  <div>
+                    <Label htmlFor="firstName">First Name *</Label>
+                    <Input id="firstName" required value={data.firstName} onChange={e => update({ firstName: e.target.value })} className="mt-1" />
+                  </div>
+                </div>
 
-            {/* Navigation */}
-            <div className="flex items-center justify-between mt-8 pt-6 border-t border-border">
-              <Button variant="outline" onClick={handleBack} disabled={step === 0} className="gap-2">
-                <ChevronLeft className="w-4 h-4" /> Back
-              </Button>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                  <div>
+                    <Label htmlFor="sin">SIN</Label>
+                    <Input id="sin" value={data.sin} onChange={e => update({ sin: e.target.value })} className="mt-1" />
+                  </div>
+                  <div>
+                    <Label htmlFor="dob">Date of Birth *</Label>
+                    <Input id="dob" type="date" required value={data.dob} onChange={e => update({ dob: e.target.value })} className="mt-1" />
+                  </div>
+                  <div>
+                    <Label>Sex *</Label>
+                    <RadioGroup value={data.sex} onValueChange={v => update({ sex: v })} className="flex gap-4 mt-2">
+                      <div className="flex items-center gap-2"><RadioGroupItem value="M" id="sexM" /><Label htmlFor="sexM">Male</Label></div>
+                      <div className="flex items-center gap-2"><RadioGroupItem value="F" id="sexF" /><Label htmlFor="sexF">Female</Label></div>
+                    </RadioGroup>
+                  </div>
+                </div>
 
-              <div className="flex gap-3">
-                {step === 2 && (
-                  <>
-                    <Button variant="outline" onClick={handleDownload} className="gap-2">
-                      <Download className="w-4 h-4" /> Download PDF
-                    </Button>
-                    <Button onClick={handleSubmit} className="gap-2">
-                      <Send className="w-4 h-4" /> Submit Application
-                    </Button>
-                  </>
-                )}
-                {step < 2 && (
-                  <Button onClick={handleNext} className="gap-2">
-                    Next <ChevronRight className="w-4 h-4" />
-                  </Button>
-                )}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                  <div>
+                    <Label htmlFor="address">Address *</Label>
+                    <Input id="address" required value={data.address} onChange={e => update({ address: e.target.value })} className="mt-1" />
+                  </div>
+                  <div>
+                    <Label htmlFor="cityProvince">City / Province *</Label>
+                    <Input id="cityProvince" required value={data.cityProvince} onChange={e => update({ cityProvince: e.target.value })} className="mt-1" />
+                  </div>
+                  <div>
+                    <Label htmlFor="postalCode">Postal Code *</Label>
+                    <Input id="postalCode" required value={data.postalCode} onChange={e => update({ postalCode: e.target.value })} className="mt-1" />
+                  </div>
+                </div>
               </div>
-            </div>
+
+              {/* Education */}
+              <div>
+                <h3 className="text-lg font-heading font-bold text-foreground mb-4 border-b border-border pb-2">Level of Education</h3>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div>
+                    <Label htmlFor="highSchool">High School</Label>
+                    <Input id="highSchool" value={data.highSchool} onChange={e => update({ highSchool: e.target.value })} className="mt-1" />
+                  </div>
+                  <div>
+                    <Label htmlFor="college">College</Label>
+                    <Input id="college" value={data.college} onChange={e => update({ college: e.target.value })} className="mt-1" />
+                  </div>
+                  <div>
+                    <Label htmlFor="university">University</Label>
+                    <Input id="university" value={data.university} onChange={e => update({ university: e.target.value })} className="mt-1" />
+                  </div>
+                </div>
+              </div>
+
+              {/* Position */}
+              <div>
+                <h3 className="text-lg font-heading font-bold text-foreground mb-4 border-b border-border pb-2">Position You Are Applying For</h3>
+                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                  {[
+                    { title: "Industrial", options: industrialOptions },
+                    { title: "Skills", options: skillsOptions },
+                    { title: "Office", options: officeOptions },
+                    { title: "Driver", options: driverOptions },
+                    { title: "Machine Operator", options: machineOptions },
+                  ].map(cat => (
+                    <div key={cat.title}>
+                      <p className="font-semibold text-sm mb-2">{cat.title}</p>
+                      <div className="space-y-2">
+                        {cat.options.map(opt => (
+                          <div key={opt} className="flex items-center gap-2">
+                            <Checkbox checked={data.positions.includes(opt)} onCheckedChange={() => togglePosition(opt)} id={`pos-${opt}`} />
+                            <Label htmlFor={`pos-${opt}`} className="text-sm font-normal cursor-pointer">{opt}</Label>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Submit */}
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-end gap-3 pt-6 border-t border-border">
+                <Button type="button" variant="outline" onClick={handleDownload} className="gap-2">
+                  <Download className="w-4 h-4" /> Download PDF
+                </Button>
+                <Button type="submit" disabled={submitting} className="gap-2">
+                  <Send className="w-4 h-4" /> {submitting ? "Submitting..." : "Submit Application"}
+                </Button>
+              </div>
+            </form>
           </div>
         </section>
       </main>
