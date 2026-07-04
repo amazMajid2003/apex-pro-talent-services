@@ -6,10 +6,11 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useToast } from "@/hooks/use-toast";
-import { Download, Send } from "lucide-react";
+import { Download, Send, Upload, FileText, X } from "lucide-react";
 import jsPDF from "jspdf";
+import { supabase } from "@/integrations/supabase/client";
 
 const industrialOptions = ["General Help", "Heavy Lifting", "Lighting/Lifting", "Packing", "Ingredient Mixer", "Food Handler", "Line Operator", "Material Handler", "Cleaner"];
 const skillsOptions = ["Forklift", "Tig Welding", "Mig Welding", "Construction", "Wood Work"];
@@ -83,10 +84,19 @@ const generatePDF = (data: typeof initialData) => {
   return doc;
 };
 
+const ACCEPTED_RESUME_TYPES = [
+  "application/pdf",
+  "application/msword",
+  "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+];
+const MAX_RESUME_BYTES = 10 * 1024 * 1024;
+
 const JobApplication = () => {
   const { toast } = useToast();
   const [data, setData] = useState(initialData);
+  const [resume, setResume] = useState<File | null>(null);
   const [submitting, setSubmitting] = useState(false);
+  const resumeInputRef = useRef<HTMLInputElement | null>(null);
 
   const update = (patch: Partial<typeof initialData>) => setData(prev => ({ ...prev, ...patch }));
 
@@ -96,10 +106,42 @@ const JobApplication = () => {
     update({ positions: updated });
   };
 
+  const handleResumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    if (!ACCEPTED_RESUME_TYPES.includes(file.type)) {
+      toast({ title: "Invalid file type", description: "Please upload a PDF or Word document (.pdf, .doc, .docx).", variant: "destructive" });
+      e.target.value = "";
+      return;
+    }
+    if (file.size > MAX_RESUME_BYTES) {
+      toast({ title: "File too large", description: "Resume must be 10MB or smaller.", variant: "destructive" });
+      e.target.value = "";
+      return;
+    }
+    setResume(file);
+  };
+
+  const clearResume = () => {
+    setResume(null);
+    if (resumeInputRef.current) resumeInputRef.current.value = "";
+  };
+
   const handleDownload = () => {
     const doc = generatePDF(data);
     doc.save(`Job_Application_${data.firstName}_${data.lastName}.pdf`);
     toast({ title: "Downloaded!", description: "Your application has been saved as a PDF." });
+  };
+
+  const uploadResumeToDrive = async (): Promise<string | null> => {
+    if (!resume) return null;
+    const fd = new FormData();
+    fd.append("file", resume);
+    fd.append("firstName", data.firstName);
+    fd.append("lastName", data.lastName);
+    const { data: result, error } = await supabase.functions.invoke("upload-resume", { body: fd });
+    if (error) throw error;
+    return (result as { webViewLink?: string })?.webViewLink ?? null;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -115,6 +157,17 @@ const JobApplication = () => {
     // Download PDF
     handleDownload();
 
+    // Upload resume (optional)
+    let resumeLink: string | null = null;
+    if (resume) {
+      try {
+        resumeLink = await uploadResumeToDrive();
+      } catch (err) {
+        console.error("Resume upload error:", err);
+        toast({ title: "Resume upload failed", description: "We couldn't upload your resume. The rest of your application will still be submitted.", variant: "destructive" });
+      }
+    }
+
     // Send data to Google Sheet
     const sheetData = {
       first_name: data.firstName,
@@ -127,6 +180,7 @@ const JobApplication = () => {
       postal_code: data.postalCode,
       education_level: [data.highSchool, data.college, data.university].filter(Boolean).join(", "),
       position_applied: data.positions,
+      resume_link: resumeLink,
     };
 
     try {
@@ -138,6 +192,7 @@ const JobApplication = () => {
       });
       toast({ title: "Application Submitted!", description: "Your application has been saved and the PDF downloaded." });
       setData(initialData);
+      clearResume();
     } catch (err) {
       console.error("Sheet submission error:", err);
       toast({ title: "Application Saved", description: "PDF downloaded. There was an issue saving online — please email the PDF to info@atspro.ca.", variant: "destructive" });
