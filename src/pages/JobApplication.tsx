@@ -316,6 +316,38 @@ const JobApplication = () => {
                 </div>
               </div>
 
+              {/* Resume Upload */}
+              <div>
+                <h3 className="text-lg font-heading font-bold text-foreground mb-4 border-b border-border pb-2">Resume (Optional)</h3>
+                <p className="text-sm text-muted-foreground mb-3">Attach your resume as a PDF or Word document (.pdf, .doc, .docx). Max 10MB.</p>
+                <input
+                  ref={resumeInputRef}
+                  id="resume"
+                  type="file"
+                  accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                  onChange={handleResumeChange}
+                  className="hidden"
+                />
+                {!resume ? (
+                  <Button type="button" variant="outline" onClick={() => resumeInputRef.current?.click()} className="gap-2">
+                    <Upload className="w-4 h-4" /> Choose Resume File
+                  </Button>
+                ) : (
+                  <div className="flex items-center justify-between gap-3 p-3 border border-border rounded-md bg-muted/40">
+                    <div className="flex items-center gap-2 min-w-0">
+                      <FileText className="w-4 h-4 shrink-0 text-primary" />
+                      <div className="min-w-0">
+                        <p className="text-sm font-medium truncate">{resume.name}</p>
+                        <p className="text-xs text-muted-foreground">{(resume.size / 1024).toFixed(1)} KB</p>
+                      </div>
+                    </div>
+                    <Button type="button" variant="ghost" size="sm" onClick={clearResume} className="gap-1">
+                      <X className="w-4 h-4" /> Remove
+                    </Button>
+                  </div>
+                )}
+              </div>
+
               {/* Submit */}
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-end gap-3 pt-6 border-t border-border">
                 <Button type="button" variant="outline" onClick={handleDownload} className="gap-2">
